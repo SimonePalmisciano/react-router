@@ -1,9 +1,15 @@
-import Main from "./components/Main/Main";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import NotFound from "./pages/NotFound";
 
 
 function App() {
   return (
-    <Main />
+    <BrowserRouter>
+      <Routes>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
+
 export default App;
