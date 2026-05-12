@@ -1,10 +1,10 @@
 function ChiSiamo() {
     return (
-        <main>
-            <div className="d-flex justify-content-center">
-                <h1 className="m-3">CHI SIAMO?</h1>
-            </div>
-            <section className="main-section banner-img">
+        <div className="container py-5">
+            <div className="bg-body-tertiary rounded-2 p-5">
+                <div className="d-flex justify-content-center">
+                    <h1 className="m-3">CHI SIAMO?</h1>
+                </div>
                 <div className="container d-flex flex-column justify-content-center align-items-center h-100">
                     <h3 className="mb-3">Qui puoi trovare approfondire che siamo e da dove veniamo</h3>
                     <p>
@@ -13,8 +13,8 @@ function ChiSiamo() {
                         odit voluptatum dolores? Ab quod cupiditate possimus nisi ex blanditiis accusamus.
                     </p>
                 </div>
-            </section>
-        </main>
+            </div>
+        </div>
     )
 }
 export default ChiSiamo
