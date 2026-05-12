@@ -1,5 +1,7 @@
 import { useEffect } from "react"
 import { useState } from "react"
+import Card from "./PaginaProdotto"
+import { Link } from "react-router"
 
 const API_URL = "https://fakestoreapi.com/products"
 
@@ -32,15 +34,22 @@ function Prodotti() {
                         image
                     } = product;
                     return (
-                        <div key={id} className="card bg-body-tertiary col-sm-12 col-md-6 col-lg-4">
-                            <img src={image} className="img-fluid product-img" alt={name} />
-                            <div className="card-body">
-                                <h5 className="card-title">{title}</h5>
-                                <p className="card-text">{description}</p>
-                            </div>
-                            <ul className="list-group list-group-flush">
-                                <li className="">{price}€</li>
-                            </ul>
+                        <div key={id} className="col-sm-12 col-md-6 col-lg-4">
+                            <Link className="text-decoration-none" to="" >
+                                <div className="card bg-body-tertiary text-black">
+                                    <div className="card-header d-flex align-items-center">
+                                        <h5 className="card-title">{title}</h5>
+                                    </div>
+                                    <img src={image} className="img-fluid product-img" alt={name} />
+                                    <hr />
+                                    <div className="card-body">
+                                        <p className="card-description">{description}</p>
+                                    </div>
+                                    <ul className="list-group list-group-flush text-center">
+                                        <li className="fw-bold fs-4"> {price} &euro; </li>
+                                    </ul>
+                                </div>
+                            </Link>
                         </div>
                     )
                 })}

@@ -11,8 +11,17 @@ ul {
     list-style-type: none;
 }
 
+.card-header {
+    height: 100px;
+}
+
 .product-img {
-    height: 300px;
+    max-height: 250px;
+    min-height: 250px;
     object-fit: contain;
-    object-position: 50% 25%;
+}
+
+.card-description {
+    height: 150px;
+    overflow: auto;
 }
