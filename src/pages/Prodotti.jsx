@@ -35,7 +35,7 @@ function Prodotti() {
                     } = product;
                     return (
                         <div key={id} className="col-sm-12 col-md-6 col-lg-4">
-                            <Link className="text-decoration-none" to="" >
+                            <Link className="text-decoration-none" to={`/prodotto/${id}`} >
                                 <div className="card bg-body-tertiary text-black">
                                     <div className="card-header d-flex align-items-center">
                                         <h5 className="card-title">{title}</h5>
