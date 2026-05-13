@@ -16,6 +16,13 @@ function PaginaProdotto() {
                 console.log(data);
                 setProduct(data)
             })
+
+        if(actualProduct < 1) {
+            setActualProduct(actualProduct+1)
+        } 
+
+        console.log("Prodotto Attuale:", actualProduct);
+
     }, [actualProduct])
 
     return (
