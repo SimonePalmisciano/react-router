@@ -1,24 +1,38 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Card, Col } from "react-bootstrap";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { fetchProduct } from "../hooks/useFetch";
 
 function PaginaProdotto() {
-    const { productId } = useParams()
+    const { productId } = useParams();
+    const navigate = useNavigate();
     const [product, setProduct] = useState({})
 
+    const [actualProduct, setActualProduct] = useState(Number(productId))
+
     useEffect(() => {
-        fetchProduct(productId)
+        fetchProduct(actualProduct)
             .then(data => {
                 console.log(data);
                 setProduct(data)
             })
-    }, [])
-
+    }, [actualProduct])
 
     return (
         <Container>
-            <Card className="bg-body-tertiary text-black" >
+            <div className="d-flex justify-content-between my-3">
+                <button
+                    className="btn btn-secondary"
+                    onClick={() => navigate(setActualProduct(actualProduct - 1))}>
+                    Prodotto precedente
+                </button>
+                <button
+                    className="btn btn-secondary"
+                    onClick={() => navigate(setActualProduct(actualProduct + 1))}>
+                    Prodotto successivo
+                </button>
+            </div>
+            <Card className="bg-body-tertiary text-black my-3" >
                 <Card.Header className="d-flex align-items-center">
                     <h5 className="card-title">{product.title}</h5>
                 </Card.Header>
