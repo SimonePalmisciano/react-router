@@ -1,0 +1,10 @@
+allora avevo pensato a creare 2 componenti in più
+cioè la pagina dei prodotti e la pagina del prodotto singolo
+
+poi creare un componente del solo prodotto
+
+poi tramite una funzione onClick che avverrà sulla card nella 
+pagina dei prodotti se si può passare delle props dalla pagina dei prodotti 
+a quella del singolo prodotto
+
+forse si può fare passando 

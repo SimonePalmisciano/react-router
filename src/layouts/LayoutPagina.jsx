@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router"
+import { Outlet, Link, NavLink } from "react-router"
 
 
 function LayoutPagina() {
@@ -10,19 +10,19 @@ function LayoutPagina() {
                         <span className="navbar-brand fw-bold">React Router</span>
                         <ul className="navbar-nav ms-auto gap-2">
                             <li className="nav-item">
-                                <Link to="/" className="nav-link">
+                                <NavLink to="/" className="nav-link">
                                     Home Page
-                                </Link>
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link to="/chi-siamo" className="nav-link">
+                                <NavLink to="/chi-siamo" className="nav-link">
                                     Chi Siamo
-                                </Link>
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link to="/prodotti" className="nav-link">
+                                <NavLink to="/prodotti" className="nav-link">
                                     Prodotti
-                                </Link>
+                                </NavLink>
                             </li>
                         </ul>
                     </div>
