@@ -20,11 +20,8 @@ function fetchProducts() {
 }
 
 function fetchProduct(productId) {
-    return fetch(`${API_URL}/1`)
+    return fetch(`${API_URL}/${productId}`)
         .then(response => {
-            console.log(response);
-            
-
             if (response.status === 404) {
                 throw new Error('pagina non trovata')
             } else {

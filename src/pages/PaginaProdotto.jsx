@@ -1,35 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Card, Col } from "react-bootstrap";
 import { useParams } from "react-router";
+import { fetchProduct } from "../hooks/useFetch";
 
 function PaginaProdotto() {
     const { productId } = useParams()
+    const [product, setProduct] = useState({})
 
-    {
-        /* 
-        avevo pensato se si poteva recuperare l'id 
-        che io mando attraverso il link quando clicco sulla 
-        card del prodotto
-        */
-    }
+    useEffect(() => {
+        fetchProduct(productId)
+            .then(data => {
+                console.log(data);
+                setProduct(data)
+            })
+    }, [])
 
-    
+
     return (
         <Container>
-            {}
             <Card className="bg-body-tertiary text-black" >
                 <Card.Header className="d-flex align-items-center">
-                    <h5 className="card-title">{title}</h5>
+                    <h5 className="card-title">{product.title}</h5>
                 </Card.Header>
-                <img src={image} className="img-fluid product-img" alt={name} />
+                <img src={product.image} className="img-fluid product-img" alt={product.name} />
                 <Card.Body>
-                    <p className="card-description">{description}</p>
+                    <p className="card-description">{product.description}</p>
                 </Card.Body>
                 <ul className="list-group list-group-flush text-center">
-                    <li className="fw-bold fs-4"> {price} &euro; </li>
+                    <li className="fw-bold fs-4"> {product.price} &euro; </li>
                 </ul>
             </Card>
         </Container>
     )
 }
 export default PaginaProdotto;
+
+

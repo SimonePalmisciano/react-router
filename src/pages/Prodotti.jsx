@@ -8,16 +8,6 @@ const API_URL = "https://fakestoreapi.com/products"
 function Prodotti() {
     const [products, setProducts] = useState([])
     console.log(fetchProducts());
-    
-    // const fetchProducts = () => {
-    //     fetch(API_URL)
-    //         .then(response => {
-    //             return response.json();
-    //         })
-    //         .then(jsonData => {
-    //             setProducts(jsonData);
-    //         })
-    // }
 
     useEffect(() => {
         fetchProducts()
