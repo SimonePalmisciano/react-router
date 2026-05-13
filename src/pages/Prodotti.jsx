@@ -1,25 +1,29 @@
-import { useEffect } from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Card from "./PaginaProdotto"
 import { Link } from "react-router"
+import { fetchProducts } from "../hooks/useFetch"
 
 const API_URL = "https://fakestoreapi.com/products"
 
 function Prodotti() {
     const [products, setProducts] = useState([])
-
-    const fetchProducts = () => {
-        fetch(API_URL)
-            .then(response => {
-                return response.json();
-            })
-            .then(jsonData => {
-                setProducts(jsonData);
-            })
-    }
+    console.log(fetchProducts());
+    
+    // const fetchProducts = () => {
+    //     fetch(API_URL)
+    //         .then(response => {
+    //             return response.json();
+    //         })
+    //         .then(jsonData => {
+    //             setProducts(jsonData);
+    //         })
+    // }
 
     useEffect(() => {
         fetchProducts()
+            .then(data => {
+                setProducts(data)
+            })
     }, []);
 
     return (

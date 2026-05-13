@@ -1,27 +1,39 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-function useFetch(url) {
-    const [products, setProducts] = useState([]);
+const API_URL = "https://fakestoreapi.com/products"
 
-    useEffect(() => {
+function fetchProducts() {
 
-        fetch(url)
-            .then(response => {
+    return fetch(API_URL)
+        .then(response => {
 
-                if (response.status === 404) {
-                    throw new Error('pagina non trovata')
-                } else {
-                    return response.json();
-                }
-            })
-            .then(jsonData => {
-                setProducts(jsonData);
-            })
-    },[]);
-
-    return {products}
+            if (response.status === 404) {
+                throw new Error('pagina non trovata')
+            } else {
+                return response.json();
+            }
+        })
+        .then(jsonData => {
+            return jsonData;
+        })
 }
 
+function fetchProduct(productId) {
+    return fetch(`${API_URL}/1`)
+        .then(response => {
+            console.log(response);
+            
 
-export default useFetch
+            if (response.status === 404) {
+                throw new Error('pagina non trovata')
+            } else {
+                return response.json();
+            }
+        })
+        .then(jsonData => {
+            return jsonData;
+        })
+}
+
+export {fetchProducts, fetchProduct}
