@@ -1,29 +1,33 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Card, Col } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router";
-import { fetchProduct } from "../hooks/useFetch";
+import { data, useNavigate, useParams } from "react-router";
+import { fetchProduct, fetchProducts } from "../hooks/useFetch";
 
 function PaginaProdotto() {
     const { productId } = useParams();
     const navigate = useNavigate();
-    const [product, setProduct] = useState({})
+    const [product, setProduct] = useState({});
+    const [actualProduct, setActualProduct] = useState(Number(productId));
+    const [data, setData] = useState(0);
 
-    const [actualProduct, setActualProduct] = useState(Number(productId))
+    useEffect(() => {
+        fetchProducts()
+            .then(data => {
+                setData(data)
+            })
+    },[])
 
     useEffect(() => {
         fetchProduct(actualProduct)
             .then(data => {
-                console.log(data);
                 setProduct(data)
             })
 
-        if(actualProduct < 1) {
-            setActualProduct(actualProduct+1)
-        } 
-
-        console.log("Prodotto Attuale:", actualProduct);
-
-    }, [actualProduct])
+        if (actualProduct === data.id) {
+            console.log('il numero è presente');
+            
+        }
+    }, [actualProduct]);
 
     return (
         <Container>
@@ -32,6 +36,11 @@ function PaginaProdotto() {
                     className="btn btn-secondary"
                     onClick={() => navigate(setActualProduct(actualProduct - 1))}>
                     Prodotto precedente
+                </button>
+                <button 
+                className="btn btn-secondary" 
+                onClick={() => navigate("/prodotti")}>
+                    torna alla pagina prodotti
                 </button>
                 <button
                     className="btn btn-secondary"
